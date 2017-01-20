@@ -1,0 +1,26 @@
+{{yield (hash
+    form=this
+    model=model
+    changeset=changeset
+    submitForm=(action 'submit')
+    isSubmitting=isSubmitting
+
+    error=(component 'error-for' form=this)
+    submit=(component 'submit-for' form=this)
+
+    text=(component 'input-for' form=this)
+    email=(component 'input-for' form=this type='email')
+    file=(component 'input-for' form=this type='file')
+    hidden=(component 'input-for' form=this type='hidden')
+    number=(component 'input-for' form=this type='number')
+    password=(component 'input-for' form=this type='password')
+    range=(component 'input-for' form=this type='range')
+    search=(component 'input-for' form=this type='search')
+    tel=(component 'input-for' form=this type='tel')
+    url=(component 'input-for' form=this type='url')
+
+    checkbox=(component 'checkbox-for' form=this)
+    textarea=(component 'textarea-for' form=this)
+    radio=(component 'radio-for' form=this)
+    select=(component 'select-for' form=this)
+)}}

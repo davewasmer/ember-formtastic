@@ -1,0 +1,9 @@
+{{#if hasVisibleErrors}}
+  <div class="{{if field 'field' 'form'}}-error {{if field 'field' 'form'}}-error-{{fieldClassName}}" role="alert">
+    {{#if hasBlock}}
+      {{yield error}}
+    {{else}}
+      {{error}}
+    {{/if}}
+  </div>
+{{/if}}

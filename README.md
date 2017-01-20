@@ -1,27 +1,23 @@
 # ember-formtastic
 
-This README outlines the details of collaborating on this Ember addon.
+```hbs
+{{#form-for (changeset user userValidations) as |f|}}
 
-## Installation
+  {{f.error catchall=true}}
 
-* `git clone <repository-url>` this repository
-* `cd ember-formtastic`
-* `npm install`
-* `bower install`
+  {{#f.error 'firstName' 'presence'}}You forgot your name:{{/f.error}}
+  {{f.text 'firstName'}}
 
-## Running
+  {{#f.error 'email' 'format'}}That doesn't quite look like an email{{/f.error}}
+  {{#f.error 'email' 'presence'}}You forgot your email:{{/f.error}}
+  {{#f.error 'email' 'unique'}}
+    Email already in use - did you mean to {{#link-to 'login'}}login{{/link-to}}?
+  {{/f.error}}
+  {{f.email 'email'}}
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
+  {{#f.error 'password' 'presence'}}You forgot your password:{{/f.error}}
+  {{f.password 'password'}}
 
-## Running Tests
+  {{f.submit}}
 
-* `npm test` (Runs `ember try:each` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [https://ember-cli.com/](https://ember-cli.com/).
+{{/form-for}}
