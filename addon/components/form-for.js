@@ -225,7 +225,7 @@ const FormFor = Ember.Component.extend({
 
   actions: {
     submit() {
-      this.submitForm();
+      this.submit();
     }
   }
 
