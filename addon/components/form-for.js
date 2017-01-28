@@ -112,7 +112,9 @@ const FormFor = Ember.Component.extend({
    *
    * @type {Boolean}
    */
-  canAttemptSubmit: not('isSubmitting'),
+  canAttemptSubmit: computed('isSubmitting', 'allowPristineSaves', 'changeset.isDirty', function() {
+    return (this.get('changeset.isDirty') || this.get('allowPristineSaves')) && !this.get('isSubmitting');
+  }),
 
   /**
    * Save the form on the submit event.
