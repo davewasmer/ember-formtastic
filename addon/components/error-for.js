@@ -70,10 +70,11 @@ const ErrorFor = Ember.Component.extend({
    *
    * @type {Boolean}
    */
-  isActive: computed('form.activeFields.[]', 'form.wasSubmitted', 'field', function() {
+  isActive: computed('form', 'form.activeFields.[]', 'form.wasSubmitted', 'field', function() {
+    let fieldIsForm = this.get('field') === this.get('form');
     let fieldIsActive = this.get('form.activeFields').includes(this.get('field'));
     let formWasSubmitted = this.get('form.wasSubmitted');
-    return fieldIsActive || formWasSubmitted;
+    return fieldIsForm || fieldIsActive || formWasSubmitted;
   }),
 
   /**
@@ -99,7 +100,7 @@ const ErrorFor = Ember.Component.extend({
    */
   setupError: on('init', observer('field', function() {
     let field = this.get('field');
-    let errorPath = field ? `form.changeset.error.${ field }.validation` : 'form.formError';
+    let errorPath = typeof field === 'string' ? `form.changeset.error.${ field }.validation` : 'form.formError';
     mixin(this, {
       errors: reads(errorPath)
     });
