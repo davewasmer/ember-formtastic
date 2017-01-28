@@ -34,7 +34,7 @@ const ErrorFor = Ember.Component.extend({
     },
     set(key, value) {
       if (Ember.typeOf(value) === 'string') {
-        value = new RegExp(value);
+        value = new RegExp(value, 'i');
       }
       this.set('_pattern', value);
       return value;
