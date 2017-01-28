@@ -128,7 +128,7 @@ const FormFor = Ember.Component.extend({
     if (this.get('canAttemptSubmit')) {
       this.set('isSubmitting', true);
       return this._validate().then(() => {
-        return this.action(this.get('changeset')).catch(this.handleSubmitErrors.bind(this));
+        return Promise.resolve(this.action(this.get('changeset'))).catch(this.handleSubmitErrors.bind(this));
       }).finally(() => {
         if (!this.get('isDestroying')) {
           this.set('isSubmitting', false);
